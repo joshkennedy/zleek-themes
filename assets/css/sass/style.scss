@@ -1,0 +1,93 @@
+///////////////////////////////////////
+// Colors
+///////////////////////////////////////
+
+  $base:              white;
+  $text:              #555555;
+  $primary:           #67CC9F;
+  $primary-dark:      mix($primary, black, 80%);
+  $primary-light:     mix($primary, white, 80%);
+  $gray:              #BABABA;
+  $gray-dark:         #777777;
+  $gray-light:        #F7F7F7;
+
+
+///////////////////////////////////////
+// Imports
+///////////////////////////////////////
+
+@import "reset", "layout", "mixins", "typography", "forms", "home";
+
+
+///////////////////////////////////////
+// Global Styles
+///////////////////////////////////////
+
+body {
+  background: $base;
+  color: $text;
+}
+
+
+// Header
+header {
+  margin-top: 40px;
+  h1 {
+    font-size: 24px;
+    font-style: italic;
+    float: left;
+    margin-bottom: 0;
+    a { color: $text; }
+    a:hover { color: darken($text, 15%); }
+  }
+  nav {
+    float: right;
+    margin-top: 5px;
+    ul li {
+      display: inline;
+      margin-left: 20px;
+      font-family: $serif;
+      //text-transform: uppercase;
+      //a { color: $gray-dark; }
+    }
+  }
+  @include breakpoint(baby-bear) { 
+    h1, nav {
+      float: none;
+      text-align: center;
+    }
+  }
+}
+
+// Footer
+footer {
+  border-top: 1px solid lighten($gray, 22%);
+  padding-top: 1em;
+  text-align: center;
+}
+
+
+@import "media-queries";
+
+///////////////////////////////////////
+// Print Styles
+///////////////////////////////////////
+
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
